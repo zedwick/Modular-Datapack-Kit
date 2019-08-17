@@ -29,6 +29,8 @@ scoreboard players set time_remaining mdk_rounds_val -1
 
 # Constants
 #
+scoreboard objectives add mdk_rounds_const dummy
+#
 # Numbers
 scoreboard players set 0 mdk_rounds_const 0
 scoreboard players set -1 mdk_rounds_const -1

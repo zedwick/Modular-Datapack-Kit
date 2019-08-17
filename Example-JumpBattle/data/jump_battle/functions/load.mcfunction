@@ -8,7 +8,7 @@
 scoreboard objectives add jump_battle_val dummy
 #
 # Minimum number of jumps to win (ahead of time running out)
-scoreboard players set min_jumps_to_win jump_battle_val
+scoreboard players set min_jumps_to_win jump_battle_val 10
 
 # Objective to count number of jumps each player performs
-scoreboard objective add jump_battle_jump minecraft.custom:minecraft.jump
+scoreboard objectives add jump_battle_jump minecraft.custom:minecraft.jump

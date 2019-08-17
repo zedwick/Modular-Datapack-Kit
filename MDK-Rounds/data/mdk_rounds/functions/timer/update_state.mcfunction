@@ -4,13 +4,13 @@
 #
 
 # Current state: waiting
-execute if score current_state mdk_rounds_val = state_waiting mdk_rounds_const run function mdk_rounds:timer/update_state_from_waiting
+execute if score game_state mdk_rounds_val = state_waiting mdk_rounds_const run function mdk_rounds:timer/update_state_from_waiting
 
 # Current state: lobby
-execute if score current_state mdk_rounds_val = state_lobby mdk_rounds_const run function mdk_rounds:timer/update_state_from_lobby
+execute if score game_state mdk_rounds_val = state_lobby mdk_rounds_const run function mdk_rounds:timer/update_state_from_lobby
 
 # Current state: ingame
-execute if score current_state mdk_rounds_val = state_ingame mdk_rounds_const run function mdk_rounds:timer/update_state_from_ingame
+execute if score game_state mdk_rounds_val = state_ingame mdk_rounds_const run function mdk_rounds:timer/update_state_from_ingame
 
 # Current state: postgame
-execute if score current_state mdk_rounds_val = state_postgame mdk_rounds_const run function mdk_rounds:timer/update_state_from_postgame
+execute if score game_state mdk_rounds_val = state_postgame mdk_rounds_const run function mdk_rounds:timer/update_state_from_postgame

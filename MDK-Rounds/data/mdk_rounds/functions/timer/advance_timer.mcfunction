@@ -5,7 +5,7 @@
 #
 
 # Count down time_remaining.
-scoreboard players remove time_remaining mdk_rounds_val 1
+execute if score time_remaining mdk_rounds_val > -1 mdk_rounds_const run scoreboard players remove time_remaining mdk_rounds_val 1
 
 # Update state if conditions are met.
 # If timer has reached -1, or there are not enoug players left in the game.

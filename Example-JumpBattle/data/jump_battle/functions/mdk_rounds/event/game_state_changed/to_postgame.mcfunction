@@ -6,4 +6,4 @@
 
 # Announce scores
 tellraw @a {"text":"That's all folks. Here's the scores: "}
-execute as @a run tellraw @a {"text":"Wow! ","extras":[{"selector":"@s"},{"text":" jumped "},{"score":{"objective":"jump_battle_jump","name":"@s"}},{"text":" times!"}]}
+execute as @a run tellraw @a {"text":"Wow! ","extra":[{"selector":"@s"},{"text":" jumped "},{"score":{"objective":"jump_battle_jump","name":"@s"},"color":"aqua"},{"text":" times!"}]}
