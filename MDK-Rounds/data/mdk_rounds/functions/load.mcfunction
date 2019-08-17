@@ -38,3 +38,9 @@ scoreboard players set state_waiting mdk_rounds_const 0
 scoreboard players set state_lobby mdk_rounds_const 1
 scoreboard players set state_ingame mdk_rounds_const 2
 scoreboard players set state_postgame mdk_rounds_const 3
+
+# Run commands from other datapacks tagged to run after this pack loads.
+#
+# We probably need to run this on a delay to ensure the other packs have loaded.
+#
+schedule function #mdk_rounds:event/loaded 1t

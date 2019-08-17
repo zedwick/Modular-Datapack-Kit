@@ -1,0 +1,6 @@
+{
+    "replace": "false",
+    "values": [
+        "jump_battle:mdk_rounds/event/game_state_changed/to_ingame"
+    ]
+}
