@@ -6,4 +6,4 @@ Players compete to see who can jump the most in 30 seconds!
 
 ## Dependencies
 
-- MDK-Rounds
+- [MDK-Rounds](../MDK-Rounds/)

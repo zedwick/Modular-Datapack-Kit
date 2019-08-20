@@ -30,7 +30,7 @@ Runs at the end of the game, which begins the post-game review period; this is w
 
 MDK-Rounds can be configured by editing the following scores. It is recommended to do so in a function appended to the function tag #mdk_rounds:event/loaded.
 
-All of the following scores can be found in the objective ‘mdk_rounds_val‘
+All of the following scores can be found in the objective `mdk_rounds_val`
 
 ### min_players
 
