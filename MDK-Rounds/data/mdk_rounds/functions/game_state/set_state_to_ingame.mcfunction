@@ -12,7 +12,7 @@
 scoreboard players operation game_state mdk_rounds_val = state_ingame mdk_rounds_const
 
 # Setup (start) timer
-scoreboard players operation time_remaining mdk_rounds_val = game_timer mdk_rounds_val
+scoreboard players operation time_remaining mdk_rounds_val = ingame_timer mdk_rounds_val
 
 # Run functions tagged to run when state changes
 function #mdk_rounds:event/game_state_changed
