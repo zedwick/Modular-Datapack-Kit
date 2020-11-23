@@ -48,7 +48,7 @@ Default: 30
 
 Length of time in seconds before the game starts.
 
-Set to -2 to disable automatic timer. See [Managing the Game State](#MAnaging the Game State)
+Set to -2 to disable automatic timer. See [Managing the Game State](#Managing the Game State)
 
 Default: 60
 
@@ -155,4 +155,3 @@ Once your setup tasks are complete, and you are ready for the game to start, you
 ```
 function mdk_rounds:game_state/set_state_to_ingame
 ```
-
