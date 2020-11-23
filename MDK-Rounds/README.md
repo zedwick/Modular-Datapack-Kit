@@ -4,7 +4,20 @@ Provides basic game round handling. Includes pre-game lobby, game round timer an
 
 ## Function Tag Events
 
-Other datapacks which depend on MDK-Rounds can append functions to the following function tags, which will allow commands to be ran at the specified time.
+Other datapacks which depend on MDK-Rounds can append functions to the following function tags, which will allow commands to be ran at the specified time. For example, to run your function `my_datapack:mdk_rounds/load` when MDK-Rounds loads you would need to add it to the `#mdk_rounds:event/loaded` tag.
+
+`data/mdk_rounds/tags/functions/event/loaded.json`:
+
+```
+{
+    "replace": "false",
+    "values": [
+        "my_datapack/mdk_rounds/load"
+    ]
+}
+```
+
+
 
 ### #mdk_rounds:event/loaded
 
@@ -14,13 +27,25 @@ Runs 1 tick after this datapack has loaded; this would be the best placed to alt
 
 Will run at the very start when the server is loaded, and again after the postgame phase before checking if there are enough players to start the game (countdown).
 
+### #mdk_rounds:event/game_state_changed/to_setup_lobby
+
+Runs at the start of the setup_lobby phase, preceding the lobby phase; this would be a good time to clear any remaining data from the previous game, and optionally reset the arena or load the lobby structure.
+
 ### #mdk_rounds:event/game_state_changed/to_lobby
 
 Runs at the start of the lobby phase, when the timer begins counting down to the start of the game; would be a good time to warn players of the impending start of the game.
 
+### #mdk_rounds:event/game_state_changed/to_setup_ingame
+
+Runs at the start of the setup_ingame phase, preceding the ingame phase; this would be a good time to load the game's arena, and prepare any randomised features for the round.
+
 ### #mdk_rounds:event/game_state_changed/to_ingame
 
 Runs at the start of the game; a good place to start or reset anything needed during the game.
+
+### #mdk_rounds:event/game_state_changed/to_setup_postgame
+
+Runs at the start of the setup_postgame phase, preceding the postgame phase; this would be where you stop any game functions, move players out of the arena or set them to spectator mode and otherwise prepare for the postgame review.
 
 ### #mdk_rounds:event/game_state_changed/to_postgame
 
@@ -86,13 +111,25 @@ The current timer's remaining time. Use in lobby, ingame and postgame states.
 
 Represents the number game_state is set to when the game is waiting to start.
 
+### state_setup_lobby (mdk_rounds_const)
+
+Represents the number game_state is set to when preparing for the lobby.
+
 ### state_lobby (mdk_rounds_const)
 
 Represents the number game_state is set to when the lobby timer is counting down to start the game.
 
+### state_setup_ingame (mdk_rounds_const)
+
+Represents the number game_state is set to when settig up and loading in preparation for the game.
+
 ### state_ingame (mdk_rounds_const)
 
 Represents the number game_state is set to when current in game.
+
+### state_setup_postgame (mdk_rounds_const)
+
+Represents the number game_state is set to whilst preparing for the PostGame.
 
 ### state_postgame (mdk_rounds_const)
 
@@ -114,7 +151,7 @@ function mdk_rounds:game_state/set_state_to_setup_postgame
 function mdk_rounds:game_state/set_state_to_postgame
 ```
 
-It is recommended to move to the next state in the order presented above. If the current state matches `lobby_state` then you would run `function mdk_rounds:game_state/set_state_to_setup_ingame` to move the state on to match `setup_ingame_state`. In some cases you may choose to skip straight to certain states, but you should only do this if you are sure skipping the other states will not cause any problems.
+It is recommended to move to the next state in the order presented above. If the current state matches `state_lobby` then you would run `function mdk_rounds:game_state/set_state_to_setup_ingame` to move the state on to match `state_setup_ingame`. In some cases you may choose to skip straight to certain states, but you should only do this if you are sure skipping the other states will not cause any problems.
 
 ### Disable the timer
 
@@ -130,7 +167,7 @@ With the lobby timer disabled in this manner, the lobby period will never end un
 
 ## Setup phase
 
-Each of the 3 primary game state (`lobby_state`, `ingame_state`, `postgame_state`) have 3 accompanying *setup* states (`setup_lobby_state`, `setup_ingame_state`, `setup_postgame_state`) which precede them. These are intended to provide time to perform any setup tasks required for these primary states. This could include very intensive tasks which may need to be spread out over several ticks such as loading an arena from structure files, or relatively simple tasks which can be completed in just 1 tick.
+Each of the 3 primary game state (`state_lobby`, `state_ingame`, `state_postgame`) have 3 accompanying *setup* states (`state_setup_lobby`, `state_setup_ingame`, `state_setup_postgame`) which precede them. These are intended to provide time to perform any setup tasks required for these primary states. This could include very intensive tasks which may need to be spread out over several ticks such as loading an arena from structure files, or relatively simple tasks which can be completed in just 1 tick.
 
 By default the setup states will last for just 1 tick, allowing for most simple setup tasks to be completed. If you have tasks which will need more than 1 tick to complete, you have 2 options for extending the time allotted for the setup phase.
 
