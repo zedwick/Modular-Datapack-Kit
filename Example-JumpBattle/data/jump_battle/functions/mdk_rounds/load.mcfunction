@@ -10,8 +10,8 @@
 #
 
 # Set variables used by MDK-Rounds
-# 
+#
 # Set length of time to wait before starting game
 scoreboard players set lobby_timer mdk_rounds_val 10
 # Set length of game timer to 30 seconds
-scoreboard players set game_timer mdk_rounds_val 30
+scoreboard players set ingame_timer mdk_rounds_val 30
