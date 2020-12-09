@@ -52,6 +52,9 @@ scoreboard players set state_postgame mdk_rounds_const 3
 scoreboard players set state_setup_lobby mdk_rounds_const 4
 scoreboard players set state_setup_ingame mdk_rounds_const 5
 scoreboard players set state_setup_postgame mdk_rounds_const 6
+#
+#run function for counting players
+function mdk_rounds:count_players/count_players
 
 # Run commands from other datapacks tagged to run after this pack loads.
 #
